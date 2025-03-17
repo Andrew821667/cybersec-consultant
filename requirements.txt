@@ -1,0 +1,21 @@
+# Основные библиотеки
+langchain==0.1.0
+langchain_openai==0.0.5
+langchain_community==0.0.15
+openai>=1.0.0
+faiss-cpu==1.8.0
+tiktoken==0.5.2
+
+# Обработка документов
+PyPDF2==3.0.1
+python-docx==1.0.0
+pypdf==4.0.1
+
+# Утилиты
+tqdm==4.66.1
+matplotlib==3.8.0
+numpy==1.24.3
+colorama==0.4.6
+
+# Дополнительные инструменты
+python-dotenv==1.0.0

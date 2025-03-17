@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Data directories
+data/
+indices/
+cache/
+responses/
+dialogs/
+stats/
+prompts/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# API keys and sensitive info
+.env
+*.pem
+*.key
+
+# OS specific
+.DS_Store
+Thumbs.db
