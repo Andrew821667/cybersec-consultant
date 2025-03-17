@@ -230,7 +230,7 @@ class MitreAttackService:
             
             logger.info(f"Loaded MITRE ATT&CK cache: {len(self.tactics)} tactics, {len(self.techniques)} techniques, {len(self.groups)} groups, {len(self.software)} software")
     
-    @retry(attempts=3, delay=2)
+    @retry(max_retries=3, initial_delay=2)
     def _fetch_mitre_data(self, data_type: str) -> Dict[str, Any]:
         """
         Получает данные MITRE ATT&CK по типу
@@ -637,7 +637,7 @@ class CVEService:
         filename = hashlib.md5(cve_id.encode()).hexdigest() + ".json"
         return os.path.join(self.cve_cache_dir, filename)
     
-    @retry(attempts=3, delay=2)
+    @retry(max_retries=3, initial_delay=2)
     def refresh_cache(self) -> bool:
         """
         Обновляет кэш данных CVE для недавних уязвимостей
@@ -734,7 +734,7 @@ class CVEService:
             self.recent_cve = []
             return False
     
-    @retry(attempts=3, delay=1)
+    @retry(max_retries=3, initial_delay=1)
     def get_cve(self, cve_id: str) -> Dict[str, Any]:
         """
         Получает информацию о конкретной уязвимости CVE
