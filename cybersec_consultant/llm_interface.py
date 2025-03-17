@@ -19,6 +19,7 @@ except ImportError:
     print("⚠️ Библиотека OpenAI не установлена. Установите ее с помощью pip install openai")
 
 from cybersec_consultant.config import ConfigManager, RESPONSES_DIR, CACHE_DIR, get_api_key
+from cybersec_consultant.state_management import STATE
 
 class LLMInterface:
     """Класс для взаимодействия с языковыми моделями"""
@@ -29,7 +30,7 @@ class LLMInterface:
         self.client = None
         
         # Инициализация API ключа
-        self.api_key = get_api_key()
+        STATE.api_key = get_api_key()
         
         # Проверяем версию OpenAI API
         self.is_new_api = self._check_openai_version()
@@ -42,7 +43,7 @@ class LLMInterface:
         os.makedirs(self.cache_dir, exist_ok=True)
         
         # Загружаем кэш ответов
-        self.response_cache = self._load_response_cache()
+        self._load_response_cache()
 
     def _check_openai_version(self):
         """Проверяет версию OpenAI API"""
@@ -67,9 +68,9 @@ class LLMInterface:
         
         try:
             if self.is_new_api:
-                self.client = OpenAI(api_key=self.api_key)
+                self.client = OpenAI(api_key=STATE.api_key)
             else:
-                openai.api_key = self.api_key
+                openai.api_key = STATE.api_key
             print("✅ Клиент OpenAI успешно инициализирован")
         except Exception as e:
             print(f"❌ Ошибка при инициализации клиента OpenAI: {str(e)}")
@@ -80,23 +81,36 @@ class LLMInterface:
         if os.path.exists(cache_file):
             try:
                 with open(cache_file, 'r', encoding='utf-8') as f:
-                    cache = json.load(f)
-                print(f"✅ Загружен кэш ответов ({len(cache)} записей)")
-                return cache
+                    STATE.response_cache = json.load(f)
+                print(f"✅ Загружен кэш ответов ({len(STATE.response_cache)} записей)")
             except Exception as e:
                 print(f"❌ Ошибка при загрузке кэша ответов: {str(e)}")
-        return {}
+                STATE.response_cache = {}
+        else:
+            STATE.response_cache = {}
     
     def _save_response_cache(self):
         """Сохраняет кэш ответов в файл"""
         cache_file = os.path.join(self.cache_dir, "response_cache.json")
         try:
             with open(cache_file, 'w', encoding='utf-8') as f:
-                json.dump(self.response_cache, f, ensure_ascii=False, indent=2)
+                json.dump(STATE.response_cache, f, ensure_ascii=False, indent=2)
             return True
         except Exception as e:
             print(f"❌ Ошибка при сохранении кэша ответов: {str(e)}")
             return False
+
+    def check_cache(self, cache_key):
+        """
+        Проверяет наличие ключа в кэше
+
+        Args:
+            cache_key (str): Ключ кэша
+
+        Returns:
+            bool: True если ключ существует в кэше, иначе False
+        """
+        return cache_key in STATE.response_cache
 
     def generate_answer(self, system_prompt, user_prompt, 
                        model=None, temperature=0, use_cache=True):
@@ -126,15 +140,11 @@ class LLMInterface:
         
         # Если модель не указана, берем из конфигурации
         if model is None:
-            model = self.config_manager.get_setting("models", "default", "gpt-4o-mini")
+            model = STATE.model_name
         
-        # Создаем ключ кэша
-        cache_key = hashlib.md5(f"{system_prompt}_{user_prompt}_{model}_{temperature}".encode()).hexdigest()
-
-        # Проверяем наличие в кэше
-        if use_cache and cache_key in self.response_cache:
-            cached_response = self.response_cache[cache_key]
-            cached_response["cached"] = True
+        # Проверяем наличие в кэше через централизованное состояние
+        cached_response = STATE.get_response_from_cache(system_prompt, user_prompt, model, temperature) if use_cache else None
+        if cached_response:
             return cached_response
 
         # Если нет в кэше, генерируем ответ
@@ -204,8 +214,8 @@ class LLMInterface:
                 "timestamp": datetime.now().isoformat()
             }
 
-            # Сохраняем в кэш
-            self.response_cache[cache_key] = result
+            # Сохраняем в кэш через централизованное состояние
+            STATE.add_response_to_cache(system_prompt, user_prompt, model, temperature, result)
             self._save_response_cache()
 
             # Выводим информацию о генерации

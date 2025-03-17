@@ -15,6 +15,7 @@ from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema import Document
 
 from cybersec_consultant.config import ConfigManager, DATA_DIR
+from cybersec_consultant.state_management import STATE
 
 class DocumentProcessor:
     """Класс для обработки документов различных форматов"""
@@ -140,9 +141,9 @@ class KnowledgeBaseManager:
         self.config_manager = ConfigManager()
         self.document_processor = DocumentProcessor()
 
-        # Параметры из конфигурации
-        self.chunk_size = self.config_manager.get_setting("settings", "chunk_size", 1024)
-        self.chunk_overlap = self.config_manager.get_setting("settings", "chunk_overlap", 200)
+        # Параметры из конфигурации или из централизованного состояния
+        STATE.chunk_size = self.config_manager.get_setting("settings", "chunk_size", 1024)
+        STATE.chunk_overlap = self.config_manager.get_setting("settings", "chunk_overlap", 200)
 
         # Создаем директорию для базы знаний, если она не существует
         self.kb_dir = os.path.join(DATA_DIR, "knowledge_base")
@@ -170,6 +171,11 @@ class KnowledgeBaseManager:
                     with open(kb_file, 'w', encoding='utf-8') as f:
                         f.write(kb_text)
                     print(f"✅ База знаний сохранена в файл: {kb_file}")
+                    
+                    # Сохраняем путь и текст в состояние
+                    STATE.knowledge_base_path = file_path
+                    STATE.knowledge_base_text = kb_text
+                    
                     return kb_text
                 else:
                     print("❌ Не удалось обработать файл с базой знаний.")
@@ -189,6 +195,11 @@ class KnowledgeBaseManager:
                 with open(kb_file, 'r', encoding='utf-8') as f:
                     kb_text = f.read()
                 print(f"✅ Загружено {len(kb_text)} символов из существующего файла.")
+                
+                # Сохраняем путь и текст в состояние
+                STATE.knowledge_base_path = kb_file
+                STATE.knowledge_base_text = kb_text
+                
                 return kb_text
 
         # Если файл не существует или пользователь решил не использовать существующий
@@ -246,6 +257,10 @@ class KnowledgeBaseManager:
         kb_file = os.path.join(self.kb_dir, "cybersecurity_kb.txt")
         with open(kb_file, 'w', encoding='utf-8') as f:
             f.write(demo_kb)
+            
+        # Сохраняем путь и текст в состояние
+        STATE.knowledge_base_path = kb_file
+        STATE.knowledge_base_text = demo_kb
 
         print(f"✅ Создана демонстрационная база знаний ({len(demo_kb)} символов).")
         return demo_kb
@@ -260,12 +275,12 @@ class KnowledgeBaseManager:
         Returns:
             list: Список документов (чанков)
         """
-        print(f"🔄 Разбиваем текст на чанки (размер={self.chunk_size}, перекрытие={self.chunk_overlap})...")
+        print(f"🔄 Разбиваем текст на чанки (размер={STATE.chunk_size}, перекрытие={STATE.chunk_overlap})...")
 
         # Создаем разбиватель текста
         text_splitter = RecursiveCharacterTextSplitter(
-            chunk_size=self.chunk_size,
-            chunk_overlap=self.chunk_overlap,
+            chunk_size=STATE.chunk_size,
+            chunk_overlap=STATE.chunk_overlap,
             length_function=len,
             separators=["\n\n", "\n", " ", ""]
         )
@@ -309,6 +324,9 @@ class KnowledgeBaseManager:
                 }
             )
             documents.append(doc)
+            
+        # Сохраняем чанки в состояние
+        STATE.document_chunks = documents
 
         print(f"✅ Создано {len(documents)} чанков из текста ({len(text)} символов)")
         return documents

@@ -8,6 +8,7 @@ import json
 from datetime import datetime
 
 from cybersec_consultant.config import ConfigManager, PROMPTS_DIR
+from cybersec_consultant.state_management import STATE
 
 class PromptManager:
     """Класс для управления системными промптами"""
@@ -120,6 +121,10 @@ class PromptManager:
         
         # Загружаем сохраненные промпты или используем стандартные
         self.prompts = self._load_prompts()
+        
+        # Устанавливаем текущий профиль
+        if STATE.profile not in self.prompts:
+            STATE.profile = "standard"
     
     def _load_prompts(self):
         """Загружает промпты из файла или использует стандартные"""
@@ -160,6 +165,9 @@ class PromptManager:
         Returns:
             str: Текст промпта
         """
+        if prompt_id not in self.prompts:
+            prompt_id = STATE.profile
+            
         return self.prompts.get(prompt_id, self.prompts.get("standard"))
     
     def list_prompts(self):
@@ -249,6 +257,9 @@ class PromptManager:
         
         # Получаем выбранный промпт
         selected_prompt = self.get_prompt(selected_prompt_id)
+        
+        # Обновляем профиль в состоянии
+        STATE.profile = selected_prompt_id
         
         # Выводим предпросмотр промпта
         print(f"\nВыбран промпт: {selected_prompt_id.upper()}")

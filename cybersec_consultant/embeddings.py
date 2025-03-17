@@ -16,6 +16,7 @@ from langchain_community.vectorstores import FAISS
 from langchain.schema import Document
 
 from cybersec_consultant.config import ConfigManager, INDICES_DIR, get_api_key
+from cybersec_consultant.state_management import STATE
 
 class VectorSearchManager:
     """Класс для управления векторным поиском"""
@@ -24,19 +25,16 @@ class VectorSearchManager:
         """Инициализация менеджера векторного поиска"""
         self.config_manager = ConfigManager()
         self.embeddings = None
-        self.vector_db = None
-
-        # Инициализация API ключа
-        self.api_key = get_api_key()
+        
+        # Инициализация API ключа из централизованного состояния
+        if not STATE.api_key:
+            STATE.api_key = get_api_key()
 
         # Создаем директорию для индексов, если она не существует
         os.makedirs(INDICES_DIR, exist_ok=True)
 
         # Инициализируем модель эмбеддингов
         self._init_embeddings()
-
-        # Кэш для результатов поиска
-        self.search_cache = {}
 
     def _init_embeddings(self):
         """Инициализирует модель эмбеддингов"""
@@ -88,8 +86,8 @@ class VectorSearchManager:
             elapsed_time = time.time() - start_time
             print(f"✅ Индекс '{index_name}' успешно создан за {elapsed_time:.2f} секунд.")
 
-            # Сохраняем индекс в атрибут класса
-            self.vector_db = db
+            # Сохраняем индекс в состояние
+            STATE.vector_db = db
 
             return db
         except Exception as e:
@@ -125,8 +123,8 @@ class VectorSearchManager:
             elapsed_time = time.time() - start_time
             print(f"✅ Индекс '{index_name}' успешно загружен за {elapsed_time:.2f} секунд.")
 
-            # Сохраняем индекс в атрибут класса
-            self.vector_db = db
+            # Сохраняем индекс в состояние
+            STATE.vector_db = db
 
             return db
         except Exception as e:
@@ -145,17 +143,15 @@ class VectorSearchManager:
         Returns:
             list: Список кортежей (документ, оценка)
         """
-        if not self.vector_db:
+        if STATE.vector_db is None:
             print("❌ Векторный индекс не загружен. Сначала загрузите или создайте индекс.")
             return []
 
-        # Создаем ключ кэша
-        cache_key = f"{query}_{k}"
-
-        # Проверяем кэш, если нужно использовать
-        if use_cache and cache_key in self.search_cache:
+        # Ищем кэшированные результаты
+        cached_results = STATE.get_search_from_cache(query, k) if use_cache else None
+        if cached_results:
             print(f"🔄 Найденные документы по запросу: '{query}' (результаты взяты из кэша)")
-            return self.search_cache[cache_key]
+            return cached_results
 
         try:
             # Выполняем поиск
@@ -163,13 +159,14 @@ class VectorSearchManager:
             start_time = time.time()
 
             # Выполняем поиск с оценкой сходства
-            results_with_scores = self.vector_db.similarity_search_with_score(query, k=k)
+            results_with_scores = STATE.vector_db.similarity_search_with_score(query, k=k)
 
             # Измеряем время выполнения
             execution_time = time.time() - start_time
 
             # Сохраняем результаты в кэш
-            self.search_cache[cache_key] = results_with_scores
+            if results_with_scores and use_cache:
+                STATE.add_search_to_cache(query, k, results_with_scores)
 
             print(f"✅ Поиск выполнен за {execution_time:.2f} сек.")
             print(f"📊 Найдено {len(results_with_scores)} результатов")
