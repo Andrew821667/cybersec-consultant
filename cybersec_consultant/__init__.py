@@ -1,13 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-Пакет консультанта по кибербезопасности
+Пакет для консультанта по кибербезопасности
 """
 
 from cybersec_consultant.consultant import CybersecurityConsultant
 from cybersec_consultant.knowledge_base import KnowledgeBaseManager
-from cybersec_consultant.embeddings import VectorSearchManager
-from cybersec_consultant.hybrid_search import HybridSearchManager
-from cybersec_consultant.llm_interface import LLMInterface
-from cybersec_consultant.state_management import STATE
+from cybersec_consultant.knowledge_enrichment import get_enrichment_manager
+from cybersec_consultant.user_profiles import get_profile_manager
+from cybersec_consultant.external_services import ExternalServicesManager
 
-__version__ = "1.1.0"
+# Функция для создания экземпляра консультанта
+def create_consultant():
+    """
+    Создает экземпляр консультанта по кибербезопасности
+    
+    Returns:
+        CybersecurityConsultant: Экземпляр консультанта
+    """
+    return CybersecurityConsultant()
