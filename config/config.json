@@ -11,99 +11,43 @@
         "use_hybrid_search": true,
         "hybrid_weight": 0.5
     },
-    "user_profiles": {
-        "profiles": {
-            "beginner": {
-                "name": "Начинающий",
-                "description": "Профиль для пользователей с базовыми знаниями в кибербезопасности",
-                "technical_level": "low",
-                "style": "educational",
-                "details_level": "basic",
-                "examples": true,
-                "analogies": true,
-                "step_by_step": true,
-                "avoid_jargon": true,
-                "include_visuals": true,
-                "prompt_modifiers": [
-                    "Объясни простыми словами, как если бы объяснял человеку без технического образования.",
-                    "Избегай технического жаргона, а если используешь специальные термины, объясняй их значение.",
-                    "Приводи простые понятные примеры из повседневной жизни.",
-                    "Используй аналогии для объяснения сложных концепций.",
-                    "Объясняй шаг за шагом."
-                ]
+    "enrichment": {
+        "sources": {
+            "nist_nvd": {
+                "name": "NIST NVD",
+                "description": "National Vulnerability Database (NVD)",
+                "url": "https://services.nvd.nist.gov/rest/json/cves/2.0",
+                "api_required": false,
+                "enabled": true,
+                "max_items": 100,
+                "update_interval_hours": 24,
+                "category": "vulnerabilities"
             },
-            "standard": {
-                "name": "Стандартный",
-                "description": "Стандартный профиль для пользователей со средними знаниями",
-                "technical_level": "medium",
-                "style": "balanced",
-                "details_level": "moderate",
-                "examples": true,
-                "analogies": false,
-                "step_by_step": false,
-                "avoid_jargon": false,
-                "include_visuals": true,
-                "prompt_modifiers": [
-                    "Используй сбалансированный подход в объяснениях, с умеренным количеством технических деталей.",
-                    "Приводи практические примеры там, где это уместно.",
-                    "Можешь использовать технические термины, но поясняй сложные или специфические."
-                ]
+            "cisa_alerts": {
+                "name": "CISA Alerts",
+                "description": "Cybersecurity Advisories from CISA",
+                "url": "https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json",
+                "api_required": false,
+                "enabled": true,
+                "max_items": 50,
+                "update_interval_hours": 24,
+                "category": "advisories"
             },
-            "expert": {
-                "name": "Эксперт",
-                "description": "Профиль для продвинутых пользователей и специалистов по ИБ",
-                "technical_level": "high",
-                "style": "technical",
-                "details_level": "detailed",
-                "examples": false,
-                "analogies": false,
-                "step_by_step": false,
-                "avoid_jargon": false,
-                "include_visuals": false,
-                "prompt_modifiers": [
-                    "Используй профессиональную техническую терминологию без упрощений.",
-                    "Предоставляй детальные и точные технические объяснения.",
-                    "Фокусируйся на фактах и технических деталях, минимизируя вводную информацию.",
-                    "Можешь использовать специализированные термины без пояснений."
-                ]
-            },
-            "educational": {
-                "name": "Образовательный",
-                "description": "Профиль для обучения основам кибербезопасности",
-                "technical_level": "medium",
-                "style": "educational",
-                "details_level": "comprehensive",
-                "examples": true,
-                "analogies": true,
-                "step_by_step": true,
-                "avoid_jargon": false,
-                "include_visuals": true,
-                "prompt_modifiers": [
-                    "Отвечай как преподаватель кибербезопасности, который объясняет концепции студентам.",
-                    "Структурируй информацию логически, от общего к частному.",
-                    "Объясняй базовые концепции, прежде чем переходить к более сложным.",
-                    "Включай 'интересные факты' или исторический контекст, где это уместно.",
-                    "Предлагай вопросы для самопроверки понимания материала."
-                ]
-            },
-            "incident_response": {
-                "name": "Реагирование на инциденты",
-                "description": "Профиль для ситуаций реагирования на инциденты ИБ",
-                "technical_level": "high",
-                "style": "concise",
-                "details_level": "actionable",
-                "examples": false,
-                "analogies": false,
-                "step_by_step": true,
-                "avoid_jargon": false,
-                "include_visuals": false,
-                "prompt_modifiers": [
-                    "Предоставляй четкие, краткие и конкретные рекомендации по действиям.",
-                    "Структурируй ответ в виде пошаговых инструкций или чек-листа, где это применимо.",
-                    "Приоритизируй информацию от наиболее критичной к менее важной.",
-                    "Фокусируйся на практических действиях, которые нужно предпринять."
-                ]
+            "security_blogs": {
+                "name": "Security Blogs",
+                "description": "RSS feeds from top security blogs",
+                "sources": [
+                    "https://krebsonsecurity.com/feed/",
+                    "https://www.schneier.com/feed/",
+                    "https://www.darkreading.com/rss.xml"
+                ],
+                "api_required": false,
+                "enabled": true,
+                "max_items": 30,
+                "update_interval_hours": 12,
+                "category": "news"
             }
-        }
+        },
+        "update_interval_hours": 0.01
     }
 }

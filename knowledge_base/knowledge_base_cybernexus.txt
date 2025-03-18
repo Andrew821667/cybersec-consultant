@@ -9935,3 +9935,316 @@ AI для координации действий | Высокое | Отсут�
 - **Невыполнение требований к локализации баз данных:** Провести аудит информационных систем и при необходимости перенести данные на территорию РФ
 - **Отсутствие или ненадлежащее получение согласий на обработку персональных данных:** Внедрить автоматизированные процессы получения и учета согласий
 - **Несоответствие мер по защите персональных данных требованиям законодательства:** Внедрить продукты КиберНексус для комплексной защиты персональных данных
+
+
+# Автоматически собранные данные по кибербезопасности
+
+*Обновлено: 2025-03-18 21:16:13*
+
+## Рекомендации и предупреждения
+
+### CISA Alerts
+
+#### Эксплуатируемая уязвимость CVE-2025-30066 (CVE-2025-30066)
+
+tj-actions/changed-files GitHub Action Embedded Malicious Code Vulnerability
+
+*Опубликовано: 2025-03-18 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-24472 (CVE-2025-24472)
+
+Fortinet FortiOS and FortiProxy Authentication Bypass Vulnerability
+
+*Опубликовано: 2025-03-18 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-21590 (CVE-2025-21590)
+
+Juniper Junos OS Improper Isolation or Compartmentalization Vulnerability
+
+*Опубликовано: 2025-03-13 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-24201 (CVE-2025-24201)
+
+Apple Multiple Products WebKit Out-of-Bounds Write Vulnerability
+
+*Опубликовано: 2025-03-13 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-24993 (CVE-2025-24993)
+
+Microsoft Windows NTFS Heap-Based Buffer Overflow Vulnerability
+
+*Опубликовано: 2025-03-11 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-24991 (CVE-2025-24991)
+
+Microsoft Windows NTFS Out-Of-Bounds Read Vulnerability
+
+*Опубликовано: 2025-03-11 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-24985 (CVE-2025-24985)
+
+Microsoft Windows Fast FAT File System Driver Integer Overflow Vulnerability
+
+*Опубликовано: 2025-03-11 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-24984 (CVE-2025-24984)
+
+Microsoft Windows NTFS Information Disclosure Vulnerability
+
+*Опубликовано: 2025-03-11 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-24983 (CVE-2025-24983)
+
+Microsoft Windows Win32k Use-After-Free Vulnerability
+
+*Опубликовано: 2025-03-11 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-26633 (CVE-2025-26633)
+
+Microsoft Windows Management Console (MMC) Improper Neutralization Vulnerability
+
+*Опубликовано: 2025-03-11 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-13161 (CVE-2024-13161)
+
+Ivanti Endpoint Manager (EPM) Absolute Path Traversal Vulnerability
+
+*Опубликовано: 2025-03-10 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-13160 (CVE-2024-13160)
+
+Ivanti Endpoint Manager (EPM) Absolute Path Traversal Vulnerability
+
+*Опубликовано: 2025-03-10 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-13159 (CVE-2024-13159)
+
+Ivanti Endpoint Manager (EPM) Absolute Path Traversal Vulnerability
+
+*Опубликовано: 2025-03-10 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-57968 (CVE-2024-57968)
+
+Advantive VeraCore Unrestricted File Upload Vulnerability
+
+*Опубликовано: 2025-03-10 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-25181 (CVE-2025-25181)
+
+Advantive VeraCore SQL Injection Vulnerability
+
+*Опубликовано: 2025-03-10 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-22226 (CVE-2025-22226)
+
+VMware ESXi, Workstation, and Fusion Information Disclosure Vulnerability
+
+*Опубликовано: 2025-03-04 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-22225 (CVE-2025-22225)
+
+VMware ESXi Arbitrary Write Vulnerability
+
+*Опубликовано: 2025-03-04 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-22224 (CVE-2025-22224)
+
+VMware ESXi and Workstation TOCTOU Race Condition Vulnerability
+
+*Опубликовано: 2025-03-04 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-50302 (CVE-2024-50302)
+
+Linux Kernel Use of Uninitialized Resource Vulnerability
+
+*Опубликовано: 2025-03-04 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-4885 (CVE-2024-4885)
+
+Progress WhatsUp Gold Path Traversal Vulnerability
+
+*Опубликовано: 2025-03-03 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2018-8639 (CVE-2018-8639)
+
+Microsoft Windows Win32k Improper Resource Shutdown or Release Vulnerability
+
+*Опубликовано: 2025-03-03 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2022-43769 (CVE-2022-43769)
+
+Hitachi Vantara Pentaho BA Server Special Element Injection Vulnerability
+
+*Опубликовано: 2025-03-03 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2022-43939 (CVE-2022-43939)
+
+Hitachi Vantara Pentaho BA Server Authorization Bypass Vulnerability
+
+*Опубликовано: 2025-03-03 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2023-20118 (CVE-2023-20118)
+
+Cisco Small Business RV Series Routers Command Injection Vulnerability
+
+*Опубликовано: 2025-03-03 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2023-34192 (CVE-2023-34192)
+
+Synacor Zimbra Collaboration Suite (ZCS) Cross-Site Scripting (XSS) Vulnerability
+
+*Опубликовано: 2025-02-25 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-49035 (CVE-2024-49035)
+
+Microsoft Partner Center Improper Access Control Vulnerability
+
+*Опубликовано: 2025-02-25 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-20953 (CVE-2024-20953)
+
+Oracle Agile Product Lifecycle Management (PLM) Deserialization Vulnerability
+
+*Опубликовано: 2025-02-24 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2017-3066 (CVE-2017-3066)
+
+Adobe ColdFusion Deserialization Vulnerability
+
+*Опубликовано: 2025-02-24 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-24989 (CVE-2025-24989)
+
+Microsoft Power Pages Improper Access Control Vulnerability
+
+*Опубликовано: 2025-02-21 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-0111 (CVE-2025-0111)
+
+Palo Alto Networks PAN-OS File Read Vulnerability
+
+*Опубликовано: 2025-02-20 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-23209 (CVE-2025-23209)
+
+Craft CMS Code Injection Vulnerability
+
+*Опубликовано: 2025-02-20 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-0108 (CVE-2025-0108)
+
+Palo Alto Networks PAN-OS Authentication Bypass Vulnerability
+
+*Опубликовано: 2025-02-18 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-53704 (CVE-2024-53704)
+
+SonicWall SonicOS SSLVPN Improper Authentication Vulnerability
+
+*Опубликовано: 2025-02-18 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-57727 (CVE-2024-57727)
+
+SimpleHelp Path Traversal Vulnerability
+
+*Опубликовано: 2025-02-13 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-24200 (CVE-2025-24200)
+
+Apple iOS and iPadOS Incorrect Authorization Vulnerability
+
+*Опубликовано: 2025-02-12 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-41710 (CVE-2024-41710)
+
+Mitel SIP Phones Argument Injection Vulnerability
+
+*Опубликовано: 2025-02-12 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-40891 (CVE-2024-40891)
+
+Zyxel DSL CPE OS Command Injection Vulnerability
+
+*Опубликовано: 2025-02-11 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-40890 (CVE-2024-40890)
+
+Zyxel DSL CPE OS Command Injection Vulnerability
+
+*Опубликовано: 2025-02-11 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-21418 (CVE-2025-21418)
+
+Microsoft Windows Ancillary Function Driver for WinSock Heap-Based Buffer Overflow Vulnerability
+
+*Опубликовано: 2025-02-11 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-21391 (CVE-2025-21391)
+
+Microsoft Windows Storage Link Following Vulnerability
+
+*Опубликовано: 2025-02-11 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-0994 (CVE-2025-0994)
+
+Trimble Cityworks Deserialization Vulnerability
+
+*Опубликовано: 2025-02-07 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2020-15069 (CVE-2020-15069)
+
+Sophos XG Firewall Buffer Overflow Vulnerability
+
+*Опубликовано: 2025-02-06 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2020-29574 (CVE-2020-29574)
+
+CyberoamOS (CROS) SQL Injection Vulnerability
+
+*Опубликовано: 2025-02-06 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-21413 (CVE-2024-21413)
+
+Microsoft Outlook Improper Input Validation Vulnerability
+
+*Опубликовано: 2025-02-06 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2022-23748 (CVE-2022-23748)
+
+Dante Discovery Process Control Vulnerability
+
+*Опубликовано: 2025-02-06 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2025-0411 (CVE-2025-0411)
+
+7-Zip Mark of the Web Bypass Vulnerability
+
+*Опубликовано: 2025-02-06 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-53104 (CVE-2024-53104)
+
+Linux Kernel Out-of-Bounds Write Vulnerability
+
+*Опубликовано: 2025-02-05 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2018-19410 (CVE-2018-19410)
+
+Paessler PRTG Network Monitor Local File Inclusion Vulnerability
+
+*Опубликовано: 2025-02-04 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2018-9276 (CVE-2018-9276)
+
+Paessler PRTG Network Monitor OS Command Injection Vulnerability
+
+*Опубликовано: 2025-02-04 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+#### Эксплуатируемая уязвимость CVE-2024-29059 (CVE-2024-29059)
+
+Microsoft .NET Framework Information Disclosure Vulnerability
+
+*Опубликовано: 2025-02-04 | Подробнее: https://www.cisa.gov/known-exploited-vulnerabilities-catalog*
+
+
+## Новости кибербезопасности
+
